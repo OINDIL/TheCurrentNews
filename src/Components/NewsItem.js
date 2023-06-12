@@ -13,7 +13,7 @@ export default class extends Component {
               {description}
             </p>
             <a href="#" className="btn btn-primary">
-              Go somewhere
+              Read More
             </a>
           </div>
         </div>
