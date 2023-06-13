@@ -56,7 +56,7 @@
         },
         {
             "source": {
-                "id": null,
+                "id": "Not null",
                 "name": "CNBC"
             },
             "author": "Ashley Capoot",
@@ -82,10 +82,10 @@
         },
         {
             "source": {
-                "id": null,
+                "id": "Not null",
                 "name": "SciTechDaily"
             },
-            "author": null,
+            "author": "Not null",
             "title": "Lost in Space? Why – and How – NASA Gives a Name to Every Spot It Studies on Mars - SciTechDaily",
             "description": "Martian maps are full of monikers recognizing places on Earth, explorers, and even cartoon characters. NASA’s Perseverance rover is currently investigating rock outcrops alongside the rim of Mars’ Belva Crater. Some 2,300 miles (3,700 kilometers) away, NASA’s…",
             "url": "https://scitechdaily.com/lost-in-space-why-and-how-nasa-gives-a-name-to-every-spot-it-studies-on-mars/",
@@ -95,20 +95,7 @@
         },
         {
             "source": {
-                "id": null,
-                "name": "Neurosciencenews.com"
-            },
-            "author": "Neuroscience News",
-            "title": "This Week in Neuroscience News: Top 5 Articles of the Week - June 11, 2023 - Neuroscience News",
-            "description": null,
-            "url": "https://neurosciencenews.com/neuroscience-news-weekly-top-june4-23436/",
-            "urlToImage": null,
-            "publishedAt": "2023-06-11T15:22:02Z",
-            "content": null
-        },
-        {
-            "source": {
-                "id": null,
+                "id": "Not null",
                 "name": "Eonline.com"
             },
             "author": "Alyssa Morin",
@@ -160,7 +147,7 @@
         },
         {
             "source": {
-                "id": null,
+                "id": "Not null",
                 "name": "Yahoo Entertainment"
             },
             "author": "Josh Schafer",
@@ -176,7 +163,7 @@
                 "id": "reuters",
                 "name": "Reuters"
             },
-            "author": null,
+            "author": "Not null",
             "title": "Russia says it hits Leopard tanks, U.S. Bradley vehicles in Ukraine - Reuters",
             "description": "Russia on Sunday said it had destroyed at least seven German-made Leopard tanks and five U.S.-made Bradley vehicles over 48 hours while repelling Ukrainian attacks, though Russian bloggers reported Ukraine had briefly pierced part of the Russian line.",
             "url": "https://www.reuters.com/world/europe/russia-awards-medals-after-claiming-hits-leopard-tanks-us-bradleys-ukraine-2023-06-11/",
@@ -238,16 +225,16 @@
         },
         {
             "source": {
-                "id": null,
+                "id": "Not null",
                 "name": "YouTube"
             },
-            "author": null,
+            "author": "Not null",
             "title": "This Transformers Twist Took 16 Years to Happen | Rise of the Beasts Ending & Post-Credits Explained - IGN",
             "description": "Transformers: Rise of the Beasts is a fresh start for the long-running series. It’s set in the '90s and introduces new Cybertronian factions to the movies li...",
             "url": "https://www.youtube.com/watch?v=gJ3DUKVdmbE",
             "urlToImage": "https://i.ytimg.com/vi/gJ3DUKVdmbE/maxresdefault.jpg",
             "publishedAt": "2023-06-11T13:15:03Z",
-            "content": null
+            "content": "Not null"
         },
         {
             "source": {
