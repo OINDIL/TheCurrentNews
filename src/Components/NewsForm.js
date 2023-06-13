@@ -41,7 +41,7 @@ export default class NewsForm extends Component {
   render(props) {
     return (
       <div className='container my-3'>
-        <h2>Today's top headlines</h2>
+        <h2 className='text-center'>Today's top headlines</h2>
         <div className="row">
           {this.state.articles.map((element) => {
             return <div className="col-md-4" key={element.url}>
@@ -52,7 +52,7 @@ export default class NewsForm extends Component {
         </div>
         <div className="container d-flex justify-content-between">
           <button disabled={this.state.page <= 1} type="button" className="btn btn-success" onClick={this.handlePrevClick}>&larr; Previous</button>
-          <button type="button" className="btn btn-success" onClick={this.handleNextClick}>Next &rarr;</button>
+          <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / 20)} type="button" className="btn btn-success" onClick={this.handleNextClick}>Next &rarr;</button>
         </div>
       </div>
     )
