@@ -12,15 +12,15 @@ export default class NewsForm extends Component {
     }
   }
   async componentDidMount() {
-    let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=255b5a8b5a2241dfb62210fb69c61233&page=1&pageSize=20"
+    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=255b5a8b5a2241dfb62210fb69c61233&page=1&pageSize=${this.props.pageSize}`
     let data = await fetch(url)
     let parsedData = await data.json()
     this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults })
   }
   handleNextClick = async () => {
-    if (this.state.page + 1 > Math.ceil(this.state.totalResults / 20)) { }
+    if (this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)) { }
     else {
-      let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=255b5a8b5a2241dfb62210fb69c61233&page=${this.state.page + 1}&pageSize=20`
+      let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=255b5a8b5a2241dfb62210fb69c61233&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`
       let data = await fetch(url)
       let parsedData = await data.json()
       this.setState({
@@ -30,7 +30,7 @@ export default class NewsForm extends Component {
     }
   }
   handlePrevClick = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=255b5a8b5a2241dfb62210fb69c61233&&page=${this.state.page - 1}&pageSize=20`
+    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=255b5a8b5a2241dfb62210fb69c61233&&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`
     let data = await fetch(url)
     let parsedData = await data.json()
     this.setState({
@@ -41,7 +41,8 @@ export default class NewsForm extends Component {
   render(props) {
     return (
       <div className='container my-3'>
-        <h2 className='text-center'>Today's top headlines</h2>
+        <h2 className='text-center' style={{fontFamily:"fira code"}}>Today'<span style={{color:"red"}}>s</span> top headlines</h2>
+        <hr />
         <div className="row">
           {this.state.articles.map((element) => {
             return <div className="col-md-4" key={element.url}>
@@ -52,7 +53,7 @@ export default class NewsForm extends Component {
         </div>
         <div className="container d-flex justify-content-between">
           <button disabled={this.state.page <= 1} type="button" className="btn btn-success" onClick={this.handlePrevClick}>&larr; Previous</button>
-          <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / 20)} type="button" className="btn btn-success" onClick={this.handleNextClick}>Next &rarr;</button>
+          <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)} type="button" className="btn btn-success" onClick={this.handleNextClick}>Next &rarr;</button>
         </div>
       </div>
     )
