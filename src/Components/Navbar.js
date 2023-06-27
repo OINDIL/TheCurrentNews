@@ -1,25 +1,43 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 export class Navbar extends Component {
-
   render() {
     return (
-        <nav className="navbar navbar-expand-lg bg-light">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/"><strong style={{fontFamily:"abril fatface"}}>The Current Times</strong></a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <a
+            className="navbar-brand"
+            style={{ fontFamily: "abril fatface" }}
+            href="#"
+          >
+            The Current Times
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search for news" aria-label="Search"/>
-              <button className="btn btn-sm btn-success" type="submit">Search</button>
-            </form>
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item"><a className="nav-link" aria-current="page" href="#">Home</a></li>
+              <li className="nav-item"><a className="nav-link" aria-current="page" href="#">business</a></li>
+              <li className="nav-item"><a className="nav-link" aria-current="page" href="#">entertainment</a></li>
+              <li className="nav-item"><a className="nav-link" aria-current="page" href="#">general</a></li>
+              <li className="nav-item"><a className="nav-link" aria-current="page" href="#">health</a></li>
+              <li className="nav-item"><a className="nav-link" aria-current="page" href="#">science</a></li>
+              <li className="nav-item"><a className="nav-link" aria-current="page" href="#">sports</a></li>
+              <li className="nav-item"><a className="nav-link" aria-current="page" href="#">technology</a></li>
+            </ul>
           </div>
         </div>
       </nav>
-    )
+    );
   }
 }
 
-export default Navbar
+export default Navbar;
