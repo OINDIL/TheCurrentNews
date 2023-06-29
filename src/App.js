@@ -22,7 +22,7 @@ export default class App extends Component {
           <Route path='/health' element={<NewsForm key="health" pageSize={8} country="in" category="health"/>}></Route>
           <Route path='/science' element={<NewsForm key="science" pageSize={8} country="in" category="science"/>}></Route>
           <Route path='/sports' element={<NewsForm key="sports" pageSize={8} country="in" category="sports"/>}></Route>
-          <Route path='/technology' element={<NewsForm key="technology" pageSize={8} country="in" c ategory="technology"/>}></Route>
+          <Route path='/technology' element={<NewsForm key="technology" pageSize={8} country="in" category="technology"/>}></Route>
         </Routes>
         </Router>
       </div>

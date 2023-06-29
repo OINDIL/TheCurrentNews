@@ -8,7 +8,7 @@ export class Navbar extends Component {
           <a
             className="navbar-brand"
             style={{ fontFamily: "abril fatface" }}
-           to="#"
+           to="/"
           >
             The <span style={{color:'green'}}>Current</span> Times
           </a>
