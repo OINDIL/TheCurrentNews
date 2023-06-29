@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NewsItem from './NewsItem';
 import Spinner from './Spinner';
 import PropTypes from 'prop-types'
+import { Route } from 'react-router-dom';
 export default class NewsForm extends Component {
   static defaultProps = {
     pageSize: 8,
@@ -58,13 +59,12 @@ export default class NewsForm extends Component {
   render(props) {
     return (
       <div className='container my-3'>
-        <h2 className='text-center' style={{fontFamily:"fira code"}}>Today'<span style={{color:"red"}}>s</span> top headlines</h2>
+        <h2 className='text-center' style={{fontFamily:"fira code"}}>Today'<span style={{color:"green"}}>s</span> top headlines</h2>
         {this.state.loading===true && <Spinner/>}
-        <hr />
         <div className="row">
           {!(this.state.loading) && this.state.articles.map((element) => {
             return <div className="col-md-3" key={element.url}>
-              <NewsItem title={element.title === null ? "" : element.title.slice(0,70)} description={element.description === null ? element.title.slice(0,70) : element.description.slice(0,100)} imageUrl={element.urlToImage} newsUrl={element.url} />
+              <NewsItem title={element.title === null ? "" : element.title.slice(0,70)} description={element.description === null ? element.title.slice(0,70) : element.description.slice(0,100)} imageUrl={element.urlToImage} newsUrl={element.url} publishedAt={element.publishedAt.replace("T"," ")} />
             </div>
           })}
 

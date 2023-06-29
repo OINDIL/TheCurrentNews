@@ -2,12 +2,13 @@ import React, { Component } from "react";
 
 export default class NewsItem extends Component {
   render() {
-    let { title, description,imageUrl,newsUrl } = this.props;
+    let { title, description,imageUrl,newsUrl,publishedAt } = this.props;
     return (
       <div className="container my-4">
         <div className="card">
         <img src={imageUrl} className="card-img-top" width={200} height={200} alt={title}/>
           <div className="card-body">
+            {publishedAt.replace("Z"," ")}
             <h5 className="card-title">{title}...</h5>
             <p className="card-text">{description}...</p>
             <a href={newsUrl} rel="noreferrer" target="_blank" className="btn btn-sm btn-success">
