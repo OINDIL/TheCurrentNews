@@ -8,6 +8,7 @@ import {
   Route,
 } from 'react-router-dom';
 export default class App extends Component {
+  pageSize = 8
   render() {
     return (
       <div>
@@ -15,14 +16,14 @@ export default class App extends Component {
         <Navbar/>
         
         <Routes>
-          <Route path='/' element={<NewsForm key="general" pageSize={8} country="in" category="general"/>}></Route>
-          <Route path='/general' element={<NewsForm key="general" pageSize={8} country="in" category="general"/>}></Route>
-          <Route path='/business' element={<NewsForm key="business" pageSize={8} country="in" category="business"/>}></Route>
-          <Route path='/entertainment' element={<NewsForm key="entertainment" pageSize={8} country="in" category="entertainment"/>}></Route>
-          <Route path='/health' element={<NewsForm key="health" pageSize={8} country="in" category="health"/>}></Route>
-          <Route path='/science' element={<NewsForm key="science" pageSize={8} country="in" category="science"/>}></Route>
-          <Route path='/sports' element={<NewsForm key="sports" pageSize={8} country="in" category="sports"/>}></Route>
-          <Route path='/technology' element={<NewsForm key="technology" pageSize={8} country="in" category="technology"/>}></Route>
+          <Route path='/' element={<NewsForm key="general" pageSize={this.pageSize} country="in" category="general"/>}></Route>
+          <Route path='/general' element={<NewsForm key="general" pageSize={this.pageSize} country="in" category="general"/>}></Route>
+          <Route path='/business' element={<NewsForm key="business" pageSize={this.pageSize} country="in" category="business"/>}></Route>
+          <Route path='/entertainment' element={<NewsForm key="entertainment" pageSize={this.pageSize} country="in" category="entertainment"/>}></Route>
+          <Route path='/health' element={<NewsForm key="health" pageSize={this.pageSize} country="in" category="health"/>}></Route>
+          <Route path='/science' element={<NewsForm key="science" pageSize={this.pageSize} country="in" category="science"/>}></Route>
+          <Route path='/sports' element={<NewsForm key="sports" pageSize={this.pageSize} country="in" category="sports"/>}></Route>
+          <Route path='/technology' element={<NewsForm key="technology" pageSize={this.pageSize} country="in" category="technology"/>}></Route>
         </Routes>
         </Router>
       </div>
