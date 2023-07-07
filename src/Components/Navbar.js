@@ -25,7 +25,6 @@ export class Navbar extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ fontFamily: 'fira code' }}>
-              <li className="nav-item"><Link className="nav-link" aria-current="page" to="/"></Link></li>
               <li className="nav-item"><Link className="nav-link" aria-current="page" to="/general">Home</Link></li>
               <li className="nav-item"><Link className="nav-link" aria-current="page" to="/Business">Business</Link></li>
               <li className="nav-item"><Link className="nav-link" aria-current="page" to="/Entertainment">Entertainment</Link></li>

@@ -19,17 +19,17 @@ export default class NewsForm extends Component {
     // console.log("hello I am a constructor")
     this.state = {
       articles: [],
-      loading: false,
-      page: 1,
+      loading: true,
+      page: 0,
       totalResults: 0
     }
   }
   capitalFirstStr(string) {
     return string.charAt(0).toUpperCase() + string.slice (1);
   }
-  updateNews = async () =>{
-    const url = `https://newsapi.org/v2/top-headlines?&category=${this.props.category}&page=${this.state.page}&country=${this.props.country}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}`
+  async componentDidMount() {
     this.setState({ loading: true })
+    const url = `https://newsapi.org/v2/top-headlines?&category=${this.props.category}&page=${this.state.page}&country=${this.props.country}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}`
     let data = await fetch(url)
     let parsedData = await data.json()
     this.setState({
@@ -37,12 +37,11 @@ export default class NewsForm extends Component {
       totalResults: parsedData.totalResults,
       loading: false
     })
-  }
-  async componentDidMount() {
-    this.updateNews()
+    console.log("componentDidMount"+this.state.page)
   }
   fetchMoreData = async () => {
-    this.setState({page: this.state.page + 1})
+    this.setState({page: (this.state.page) + 2})
+    console.log("after increament "+this.state.page)
     const url = `https://newsapi.org/v2/top-headlines?&category=${this.props.category}&page=${this.state.page}&country=${this.props.country}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}`
     let data = await fetch(url)
     let parsedData = await data.json()
@@ -50,8 +49,9 @@ export default class NewsForm extends Component {
       articles: this.state.articles.concat(parsedData.articles),
       totalResults: parsedData.totalResults
     })
+    // console.log(this.state.articles)
   }
-  render(props) {
+  render() {
     return (
       <>
         <h2 className='text-center' style={{ fontFamily: "fira code" }}>Today'<span style={{ color: "green" }}>s</span> top headlines <span className="badge rounded-pill text-bg-success">{this.capitalFirstStr(this.props.category)}</span>
@@ -66,8 +66,8 @@ export default class NewsForm extends Component {
         {this.state.loading === true && <Spinner />}
         <div className="container">
         <div className="row">
-          {this.state.articles.map((element) => {
-            return <div className="col-md-3" key={element.url}>
+          {this.state.articles.map((element,index) => {
+            return <div className="col-md-3" key={index}>
               <NewsItem title={element.title === null ? "" : element.title.slice(0, 70)} description={element.description === null ? element.title.slice(0, 70) : element.description.slice(0, 100)} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
             </div>
           })}

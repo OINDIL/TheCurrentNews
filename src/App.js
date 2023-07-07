@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 export default class App extends Component {
   pageSize = 8
+  // apiKey = '255b5a8b5a2241dfb62210fb69c61233'
   apiKey = 'fd09e8fd7ea240baa387a5d28a80b8f8'
   country = 'in'
   render() {
@@ -17,7 +18,7 @@ export default class App extends Component {
         <Router>
         <Navbar/>
         <Routes>
-          <Route path='/' element={<NewsForm key="general" apiKey={this.apiKey} pageSize={this.pageSize} country={this.country} category="general"/>}></Route>
+          <Route path="/" element={<NewsForm key="logo" apiKey={this.apiKey} pageSize={this.pageSize} country={this.country} category="general"/>}></Route>
           <Route path='/general' element={<NewsForm key="general" apiKey={this.apiKey} pageSize={this.pageSize} country={this.country} category="general"/>}></Route>
           <Route path='/business' element={<NewsForm key="business" apiKey={this.apiKey} pageSize={this.pageSize} country={this.country} category="business"/>}></Route>
           <Route path='/entertainment' element={<NewsForm key="entertainment" apiKey={this.apiKey} pageSize={this.pageSize} country={this.country} category="entertainment"/>}></Route>
