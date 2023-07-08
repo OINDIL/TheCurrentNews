@@ -29,16 +29,20 @@ export default class NewsForm extends Component {
     return string.charAt(0).toUpperCase() + string.slice (1);
   }
   async componentDidMount() {
+    this.props.setProgress(0)
     this.setState({ loading: true })
     const url = `https://newsapi.org/v2/top-headlines?&category=${this.props.category}&page=${this.state.page}&country=${this.props.country}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}`
     let data = await fetch(url)
+    this.props.setProgress(30)
     let parsedData = await data.json()
+    this.props.setProgress(50)
     this.setState({
       page: this.state.page + 1,
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false
     })
+    this.props.setProgress(100)
   }
   fetchMoreData = async () => {
     this.setState({page: this.state.page + 1})
