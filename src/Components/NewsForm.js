@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem';
 import Spinner from './Spinner';
+import urlImage from "./Screenshot 2023-07-09 at 00-06-12 TheCurrentNews.pdf.png"
 import PropTypes from 'prop-types'
 import InfiniteScroll from "react-infinite-scroll-component";
 export default class NewsForm extends Component {
@@ -38,12 +39,10 @@ export default class NewsForm extends Component {
       totalResults: parsedData.totalResults,
       loading: false
     })
-    console.log("componentDidMount"+this.state.page)
   }
   fetchMoreData = async () => {
     this.setState({page: this.state.page + 1})
     const url = `https://newsapi.org/v2/top-headlines?&category=${this.props.category}&page=${this.state.page}&country=${this.props.country}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}`
-    console.log("after increament "+this.state.page)
     let data = await fetch(url)
     let parsedData = await data.json()
     this.setState({
@@ -69,7 +68,7 @@ export default class NewsForm extends Component {
         <div className="row">
           {this.state.articles.map((element) => {
             return <div className="col-md-3" key={element.url}>
-              <NewsItem title={element.title === null ? "" : element.title.slice(0, 70)} description={element.description === null ? element.title.slice(0, 70) : element.description.slice(0, 100)} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
+              <NewsItem title={element.title === null ? "" : element.title.slice(0, 70)} description={element.description === null ? element.title.slice(0, 70) : element.description.slice(0, 100)} imageUrl={element.urlToImage === null? urlImage : element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
             </div>
           })}
         </div>
