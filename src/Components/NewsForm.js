@@ -20,7 +20,7 @@ export default class NewsForm extends Component {
     this.state = {
       articles: [],
       loading: true,
-      page: 0,
+      page: 1,
       totalResults: 0
     }
   }
@@ -33,6 +33,7 @@ export default class NewsForm extends Component {
     let data = await fetch(url)
     let parsedData = await data.json()
     this.setState({
+      page: this.state.page + 1,
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false
@@ -40,9 +41,9 @@ export default class NewsForm extends Component {
     console.log("componentDidMount"+this.state.page)
   }
   fetchMoreData = async () => {
-    this.setState({page: (this.state.page) + 2})
-    console.log("after increament "+this.state.page)
+    this.setState({page: this.state.page + 1})
     const url = `https://newsapi.org/v2/top-headlines?&category=${this.props.category}&page=${this.state.page}&country=${this.props.country}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}`
+    console.log("after increament "+this.state.page)
     let data = await fetch(url)
     let parsedData = await data.json()
     this.setState({
@@ -66,8 +67,8 @@ export default class NewsForm extends Component {
         {this.state.loading === true && <Spinner />}
         <div className="container">
         <div className="row">
-          {this.state.articles.map((element,index) => {
-            return <div className="col-md-3" key={index}>
+          {this.state.articles.map((element) => {
+            return <div className="col-md-3" key={element.url}>
               <NewsItem title={element.title === null ? "" : element.title.slice(0, 70)} description={element.description === null ? element.title.slice(0, 70) : element.description.slice(0, 100)} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
             </div>
           })}
