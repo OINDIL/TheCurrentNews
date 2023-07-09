@@ -1,4 +1,4 @@
-.nav-link:hover{
-    color: green;
-    font-weight: 500;
+li a:hover{
+    font-weight: bold;
+    filter: drop-shadow(0 0 0.65rem green);
 }

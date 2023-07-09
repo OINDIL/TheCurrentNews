@@ -58,7 +58,7 @@ export default class NewsForm extends Component {
   render() {
     return (
       <>
-        <h2 className='text-center' style={{ fontFamily: "fira code" }}>Today'<span style={{ color: "green" }}>s</span> top headlines <span className="badge rounded-pill text-bg-success">{this.capitalFirstStr(this.props.category)}</span>
+        <h2 className='text-center' style={{ fontFamily: "fira code", marginTop:'90px' }}>Today'<span style={{ color: "green" }}>s</span> top headlines <span className="badge rounded-pill text-bg-success">{this.capitalFirstStr(this.props.category)}</span>
         </h2>
         
         <InfiniteScroll
@@ -72,7 +72,7 @@ export default class NewsForm extends Component {
         <div className="row">
           {this.state.articles.map((element) => {
             return <div className="col-md-3" key={element.url}>
-              <NewsItem title={element.title === null ? "" : element.title.slice(0, 70)} description={element.description === null ? element.title.slice(0, 70) : element.description.slice(0, 100)} imageUrl={element.urlToImage === null? urlImage : element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
+              <NewsItem mode={this.props.mode} title={element.title === null ? "" : element.title.slice(0, 70)} description={element.description === null ? element.title.slice(0, 70) : element.description.slice(0, 100)} imageUrl={element.urlToImage === null? urlImage : element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
             </div>
           })}
         </div>
