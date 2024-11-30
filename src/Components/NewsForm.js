@@ -7,7 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 export default class NewsForm extends Component {
   static defaultProps = {
     pageSize: 8,
-    country: "in",
+    country: "us",
     category: "science"
   }
   static propTypes = {
@@ -26,7 +26,7 @@ export default class NewsForm extends Component {
     }
   }
   capitalFirstStr(string) {
-    return string.charAt(0).toUpperCase() + string.slice (1);
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
   async componentDidMount() {
     this.props.setProgress(0)
@@ -45,7 +45,7 @@ export default class NewsForm extends Component {
     this.props.setProgress(100)
   }
   fetchMoreData = async () => {
-    this.setState({page: this.state.page + 1})
+    this.setState({ page: this.state.page + 1 })
     const url = `https://newsapi.org/v2/top-headlines?&category=${this.props.category}&page=${this.state.page}&country=${this.props.country}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}`
     let data = await fetch(url)
     let parsedData = await data.json()
@@ -58,25 +58,25 @@ export default class NewsForm extends Component {
   render() {
     return (
       <>
-        <h2 className='text-center' style={{ fontFamily: "fira code", marginTop:'90px' }}>Today'<span style={{ color: "green" }}>s</span> top headlines <span className="badge rounded-pill text-bg-success">{this.capitalFirstStr(this.props.category)}</span>
+        <h2 className='text-center' style={{ fontFamily: "fira code", marginTop: '90px' }}>Today'<span style={{ color: "green" }}>s</span> top headlines <span className="badge rounded-pill text-bg-success">{this.capitalFirstStr(this.props.category)}</span>
         </h2>
-        
+
         <InfiniteScroll
           dataLength={this.state.articles.length}
           next={this.fetchMoreData}
           hasMore={this.state.articles.length !== this.state.totalResults}
-          loader={<Spinner/>}
+          loader={<Spinner />}
         >
-        {this.state.loading === true && <Spinner />}
-        <div className="container">
-        <div className="row">
-          {this.state.articles.map((element) => {
-            return <div className="col-md-3" key={element.url}>
-              <NewsItem mode={this.props.mode} title={element.title === null ? "" : element.title.slice(0, 70)} description={element.description === null ? element.title.slice(0, 70) : element.description.slice(0, 100)} imageUrl={element.urlToImage === null? urlImage : element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
+          {this.state.loading === true && <Spinner />}
+          <div className="container">
+            <div className="row">
+              {this.state.articles.map((element) => {
+                return <div className="col-md-3" key={element.url}>
+                  <NewsItem mode={this.props.mode} title={element.title === null ? "" : element.title.slice(0, 70)} description={element.description === null ? element.title.slice(0, 70) : element.description.slice(0, 100)} imageUrl={element.urlToImage === null ? urlImage : element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
+                </div>
+              })}
             </div>
-          })}
-        </div>
-        </div>
+          </div>
         </InfiniteScroll>
       </>
     )

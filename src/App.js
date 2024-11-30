@@ -12,7 +12,7 @@ export default class App extends Component {
   pageSize = 8
   apiKey = '255b5a8b5a2241dfb62210fb69c61233'
   // apiKey = 'fd09e8fd7ea240baa387a5d28a80b8f8'
-  country = 'in'
+  country = 'us'
   state = {
     progress: 0,
     mode: 'light'
@@ -22,15 +22,15 @@ export default class App extends Component {
       progress: value
     })
   }
-  setMode = () =>{
-    if(this.state.mode === 'light'){
-      this.setState({mode: 'dark'})
-      document.body.style.backgroundColor = 'rgb(32, 33, 36)' 
-      document.body.style.color = 'white' 
+  setMode = () => {
+    if (this.state.mode === 'light') {
+      this.setState({ mode: 'dark' })
+      document.body.style.backgroundColor = 'rgb(32, 33, 36)'
+      document.body.style.color = 'white'
     }
-    else{
-      this.setState({mode:'light'})
-      document.body.style.backgroundColor = 'white' 
+    else {
+      this.setState({ mode: 'light' })
+      document.body.style.backgroundColor = 'white'
       document.body.style.color = 'black'
     }
   }
@@ -38,7 +38,7 @@ export default class App extends Component {
     return (
       <div>
         <Router>
-          <Navbar mode={this.state.mode} setMode={this.setMode}/>
+          <Navbar mode={this.state.mode} setMode={this.setMode} />
           <LoadingBar
             color='green'
             progress={this.state.progress}
